@@ -1,56 +1,88 @@
-# Welcome to your Expo app 👋
+# DuesUp
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+**Know what you pay for, before it renews.**
 
-## Get started
+DuesUp is an Android app for tracking recurring subscriptions — streaming, software, gym memberships, anything that bills on a schedule. Add your subscriptions, see what you spend each month and year, and get reminded before a charge hits.
 
-1. Install dependencies
+Built by [Courage Labs](https://couragelabs.dev).
 
-   ```bash
-   npm install
-   ```
+> **Status:** in active development, working toward v1 on Google Play.
 
-2. Start the app
+---
 
-   ```bash
-   npx expo start
-   ```
+## Features
 
-In the output, you'll find options to open the app in a
+### v1 (in progress)
+- Add, edit and remove subscriptions
+- Renewal list sorted by next charge date
+- Monthly and annual spend totals
+- Categories
+- Renewal reminders before each charge
+- Local-first storage — works fully offline
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### v1.1 (planned)
+- Cloud sync and backup across devices
+- Spending insights and charts
+- Multiple, customisable reminders per subscription
+- Price-change history
+- Multi-currency with conversion to a home currency
+- Home screen widget and CSV export
+- Premium tier via Google Play Billing
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+---
 
-## Get a fresh project
+## Tech stack
 
-When you're ready, run:
+| Area | Choice |
+|---|---|
+| App | React Native with [Expo](https://expo.dev), TypeScript |
+| Navigation | Expo Router |
+| Native modules (v1.1) | Kotlin, via the Expo Modules API — Play Billing and background reminders |
+| Backend (v1.1) | Supabase (Postgres, row-level security, edge functions) |
 
+Key technical decisions are recorded as Architecture Decision Records in [`docs/adr`](docs/adr).
+
+---
+
+## Getting started
+
+### Prerequisites
+- Node.js (LTS)
+- An Android device with [Expo Go](https://expo.dev/go), or an Android emulator
+
+### Run locally
 ```bash
-npm run reset-project
+npm install
+npx expo start
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Scan the QR code with Expo Go on your Android device. If your device can't connect over the local network, try:
 
-### Other setup steps
+```bash
+npx expo start --tunnel
+```
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+---
 
-## Learn more
+## Project structure
 
-To learn more about developing your project with Expo, look at the following resources:
+```
+app/          Screens and routes (Expo Router)
+components/   Reusable UI components
+assets/       Images, icons and fonts
+docs/adr/     Architecture Decision Records
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+---
 
-## Join the community
+## Architecture decisions
 
-Join our community of developers creating universal apps.
+| ADR | Decision |
+|---|---|
+| [0001](docs/adr/0001-use-expo.md) | Use Expo for the React Native app |
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+---
+
+## Author
+
+**Courage Eboigbe** — [Courage Labs](https://couragelabs.dev)
